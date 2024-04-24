@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+  color: white;
+  font-family: "Madimi One", sans-serif;
+        }
+        .container{
+            background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+            height: 95vh;
+            width: 100%;
+            position: relative;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: max(1500px,100vw);
+
+        }
+        .nav{
+            height: 80px;
+            /* background-color: red; */
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: auto;
+            max-width: 70vw;
+            align-items: center;
+        }
+        .nav img{
+            position: relative;
+            z-index: 3;
+            width: 140px;
+        }
+        .button button{
+            position: relative;
+            z-index: 3;
+            font-family: "Madimi One", sans-serif;
+        }
+        .button .transparent{
+            background-color: black;
+  opacity: 0.5;
+  color: white;
+  padding: 6px 30px 6px 30px;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid grey;
+  font-family: "Madimi One", sans-serif;
+        }
+        .button .transparent:hover{
+            opacity: 0.6;
+        }
+        .button .red{
+            background-color: red;
+  color: white;
+  padding: 6px 14px 6px 11px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid red;
+  font-family: "Madimi One", sans-serif;
+        }
+        .button .red:hover{
+            opacity: 0.85;
+        }
+        .box{
+           height: 95vh;
+           width: 100%;
+           background-color:black;
+           opacity: 0.5;
+           position: absolute;
+           top:0;
+        }
+        .maincontent{
+            height:80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 20px;
+            position: relative;
+            color: white;
+            gap: 20px;
+            text-align: center;
+        }
+        .maincontent> :first-child{
+            font-size: 60px;
+        }
+        .maincontent .tokens{
+            display: flex;
+        }
+        .line{
+            height: 10px;
+            background-color: rgb(50, 49, 49);
+        }
+        .tokens input{
+            padding-left: 10px;
+  padding-right: 150px;
+  font-size: 15px;
+  background-color: black;
+  opacity: 0.56;
+  color: white;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 2px solid grey;
+        }
+        .tokens button{
+            padding-left: 16px;
+  padding-right: 32px;
+  font-size: 23px;
+  color: white;
+  background-color: red;
+  border-radius: 8px;
+  border: 1px solid red;
+  font-family: "Madimi One", sans-serif;
+        }
+        .tokens button:hover{
+            opacity: 0.85;
+        }
+        .first{
+            display: flex;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 80vw;
+  
+
+        }
+        .first .content :nth-child(1){
+            font-size: 3.5rem;
+        }
+        .first .content :nth-child(2){
+            font-size: 1.5rem;
+        }
+        .first .content :nth-child(3){
+            font-size: 1.5rem;
+        }
+        .first .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 50px;
+           
+  margin-left: 50px;
+  text-align: center;
+  gap: 5px;
+        }
+        .img{
+            position: relative;
+            top: 0px;
+        }
+        .img img{
+            width: 573px;
+  height: 391px;
+  
+  z-index: 4;
+        }
+        .first .img img{
+            position: relative;
+
+        }
+        .fourth .img img{
+            width: 568px;
+  height: 430px;
+        }
+        .first video{
+            position: absolute;
+  top: 89px;
+  right: 100px;
+  width: 377px;
+  height: 194px;
+        }
+        .third .img img{
+            width: 590px;
+  height: 488px;
+  z-index: 4;
+        }
+        .second .img img{
+            width: 600px;
+  height: 440px;
+        }
+        .third video{
+            position: absolute;
+  top: 44px;
+  right: 79px;
+  width: 459px;
+  height: 212px;
+        }
+        .last{
+            display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 100%;
+  
+            
+        }
+        .last h1{
+            font-size: 48px;
+        }
+        .last .cbox{
+            background-color:#353434;
+  color: white;
+  height: 30px;
+  padding: 20px;
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+        }
+        .last .cbox:hover{
+            transition: all 0.4s ease-out;
+  background-color: #1c1919;
+        }
+        .footer{
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            /* max-width: 70vw;
+            margin: auto; */
+            padding-top: 50px;
+            padding-bottom: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .footer ul a{
+            color: white;
+            font-size: 20px;
+            /* text-decoration: none;  // this is for removing the line from ul */
+        }
+        .footer ul li{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            list-style: none;
+            cursor: pointer;
+        }
+        @media screen and (max-width:1400px){
+            .first{
+                flex-wrap: wrap;
+                
+            }
+            .third{
+                flex-wrap: nowrap;
+            }
+            .second{
+                flex-wrap: nowrap;
+            }
+            .fourth{
+                flex-wrap: wrap;
+                height: 85vh;
+            }
+        }
+        @media screen and (max-width:1000px){
+            .second{
+                /* flex-direction: column; */
+                flex-wrap: wrap;
+                height: 80vh;
+            }
+            .third{
+                flex-wrap: wrap;
+            }
+            
+            .second .img img{
+                width: 500px;
+    height: 359px;
+            }
+            .second .content :nth-child(1){
+            font-size: 2.7rem;
+        }
+        .second .content :nth-child(2){
+            font-size: 1.3rem;
+        }
+        .second .content :nth-child(3){
+            font-size: 1.3rem;
+        }
+        .first{
+            height: 80vh;
+        }
+        .first .img img{
+            width: 440px;
+    height: 335px;
+        }
+        .first video{
+            width: 293px;
+    height: 248px;
+    padding: 10px;
+   top: 24px;
+  right: 66px;
+        }
+        .third video{
+            top: -23px;
+        }
+        .fourth .img img{
+            width: 530px;
+  height: 400px;
+        }
+        .fourth{
+            height: 85vh;
+        }
+        }
+        @media screen and (max-width:770px){
+            .fourth .content :nth-child(1){
+                font-size: 2.7rem;
+            }
+            .fourth .content :nth-child(2) {
+  font-size: 1.2rem;
+}
+.fourth .content :nth-child(3) {
+  font-size: 1.2rem;
+}
+        }
+        @media screen and (max-width:615px){
+            .first{
+                height: 90vh;
+            }
+        }
+        @media screen and (max-width:600px){
+           .tokens input{
+            padding-left: 10px;
+  padding-right: 50px;
+  font-size: 15px;
+  background-color: black;
+  opacity: 0.56;
+  color: white;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 2px solid grey;
+           }
+           .tokens button{
+            padding-left: 14px;
+  padding-right: 17px;
+  font-size: 19px;
+  color: white;
+  background-color: red;
+  border-radius: 8px;
+  border: 1px solid red;
+           }
+           .footer ul a{
+            font-size: 17px;
+           }
+           .fourth{
+                flex-wrap: wrap;
+                height: 85vh;
+            }
+            .fourth .img img{
+                width: 430px;
+                height: 350px;
+            }
+            .fourth .content :nth-child(1) {
+  font-size: 2.8rem;
+}
+.fourth .content :nth-child(2) {
+  font-size: 1.2rem;
+}
+.fourth .content :nth-child(3) {
+  font-size: 1.2rem;
+}
+        }
+        @media screen and (max-width:450px){
+           .tokens input{
+            padding-left: 15px;
+    padding-right: 39px;
+    font-size: 13px;
+    background-color: black;
+    opacity: 0.56;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    border-radius: 5px;
+           }
+           .tokens button{
+            padding-left: 11px;
+    padding-right: 13px;
+    font-size: 16px;
+           }
+           .footer ul a{
+            font-size: 14px;
+           }
+           .fourth .img img{
+            width: 280px;
+    height: 210px;
+           }
+           .fourth .content :nth-child(1) {
+  font-size: 2.8rem;
+}
+.fourth .content :nth-child(2) {
+  font-size: 1.2rem;
+}
+.fourth .content :nth-child(3) {
+  font-size: 1.2rem;
+}
+.second .img img{
+            width: 290px;
+    height: 200px;
+           }
+           .second .content :nth-child(1) {
+  font-size: 2.6rem;
+}
+.second .content :nth-child(2) {
+  font-size: 1.1rem;
+}
+.second .content :nth-child(3) {
+  font-size: 1.1rem;
+}
+.third .img img{
+    width: 310px;
+    height: 210px;
+}
+.first{
+    height: 85vh;
+}
+.first .img img{
+    width: 333px;
+    height: 270px;
+}
+.first video{
+    width: 228px;
+    height: 173px;
+    padding: 4px;
+    top: 35px;
+    right: 50px;
+}
+.nav img{
+    width: 70px;
+    height: 65px;
+}
+.button .transparent{
+    padding: 6px 15px 6px 18px;
+}
+.button .red{
+    padding: 6px 9px 6px 7px;
+}
+.third video{
+    width: 208px;
+    height: 166px;
+    padding: 4px;
+    top: -5px;
+    right: 55px;
+}
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <img src="logo.svg" alt="" width="80px" height="70px">
+            <div class="button"><button class="transparent">ENGLISH</button>
+                <button class="red">SIGN IN</button></div>
+        </div>
+        <div class="box"></div>
+        <div class="maincontent">
+            <span><b>Unlimited movies, TV shows and more</b></span>
+            <span>Starts at ₹149.  Cancel anytime.</span>
+            <span>Ready to watch? Enter your email to create or restart your membership. </span>
+            <div class="tokens"><input type="email" name="" id="" placeholder="Email Address">
+            <button>Get Started-></button></div>
+
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="first">
+        <div class="content">
+            
+            <span>Enjoy on your TV</span>
+            <span>Watch on smart TVs, PlayStation, Xbox, Chromecast,</span>
+            <span>Apple TV, Blu-ray players and more.</span>
+            
+        </div>
+        <div class="img">
+          <img src="img1.jpg" alt="">
+          <video src="vid2.mp4" autoplay muted loop></video>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="first second">
+        <div class="img">
+          <img src="img2.jpg" alt="">
+          
+        </div>
+        <div class="content">
+            
+            <span>Download your shows to watch
+                offline</span>
+            <span>Save your favourites easily and always havesomething to watch.</span>
+           
+            
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="first third">
+        <div class="content">
+            
+            <span>Watch everywhere</span>
+            <span>Stream unlimited movies and TV shows on your<br> phone, tablet, laptop, and TV.</span>
+           
+            
+        </div>
+        <div class="img">
+          <img src="img3.png" alt="">
+          <video src="vid1.mp4" autoplay muted loop></video>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="first fourth">
+        <div class="img">
+          <img src="img4.jpg" alt="">
+          
+        </div>
+        <div class="content">
+            
+            <span>Create profiles for kids</span>
+            <span>Send children on adventures with their favourite </span>
+            <span>characters in a space made just for them—free with your membership.</span>
+            
+        </div>
+    </div>
+    <div class="line"></div>
+    <!-- <div class="line"></div> -->
+    <div class="last">
+        <h1>Frequently Asked Questions</h1>
+        <div class="cbox">
+            What is Netflix?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="cbox">
+            How much does Netflix cost?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="cbox">
+            Where can I watch?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="cbox">
+            How do i cancel?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="cbox">
+            What I can watch on Netflix?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="cbox">
+            Is netflix good for kids?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
+                <path d="M14.2361 5.29178C14.2361 4.77191 14.2361 4.51198 14.1789 4.29871C14.0239 3.71997 13.5718 3.26793 12.9931 3.11285C12.4315 2.96238 11.5685 2.96238 11.0069 3.11285C10.4282 3.26793 9.97615 3.71997 9.82107 4.29871C9.76393 4.51198 9.76393 4.77191 9.76393 5.29178C9.76393 6.34588 9.76393 9.109 9.43647 9.43647C9.109 9.76393 6.34588 9.76393 5.29178 9.76393C4.77191 9.76393 4.51198 9.76393 4.29871 9.82107C3.71997 9.97615 3.26793 10.4282 3.11285 11.0069C2.96238 11.5685 2.96238 12.4315 3.11285 12.9931C3.26793 13.5718 3.71997 14.0239 4.29871 14.1789C4.51198 14.2361 4.77191 14.2361 5.29178 14.2361C6.34588 14.2361 9.109 14.2361 9.43647 14.5635C9.76393 14.891 9.76393 15.418 9.76393 16.4721C9.76393 16.992 9.76393 19.4881 9.82107 19.7013C9.97615 20.28 10.4282 20.7321 11.0069 20.8871C11.5685 21.0376 12.4315 21.0376 12.9931 20.8871C13.5718 20.7321 14.0239 20.28 14.1789 19.7013C14.2361 19.4881 14.2361 16.992 14.2361 16.4721C14.2361 15.418 14.2361 14.891 14.5635 14.5635C14.891 14.2361 17.6541 14.2361 18.7082 14.2361C19.2281 14.2361 19.4881 14.2361 19.7013 14.1789C20.28 14.0239 20.7321 13.5718 20.8871 12.9931C21.0376 12.4315 21.0376 11.5685 20.8871 11.0069C20.7321 10.4282 20.28 9.97615 19.7013 9.82107C19.4881 9.76393 19.2281 9.76393 18.7082 9.76393C17.6541 9.76393 14.891 9.76393 14.5635 9.43647C14.2361 9.109 14.2361 6.34588 14.2361 5.29178Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="footer">
+        <ul class="a">
+            <li><a href="faq">Questions? Call 000-800-919-1694</a></li>
+            <li><a href="faq">FAQ</a></li>
+            <li><a href="faq">Investors relations</a></li>
+            <li><a href="faq">Privacy</a></li>
+            <li><a href="faq">speed test</a></li>
+        </ul>
+        <ul class="a">
+            <li><a href="faq">Help centre</a></li>
+            <li><a href="faq">Jobs</a></li>
+            <li><a href="faq">Cookie Preferences</a></li>
+            <li><a href="faq">legal Notices</a></li>
+        </ul>
+        <ul class="a">
+            <li><a href="faq">Account</a></li>
+            <li><a href="faq">Ways to Watch</a></li>
+            <li><a href="faq">Cooperate information</a></li>
+            <li><a href="faq">Only on Netflix</a></li>
+        </ul>
+        <ul class="a">
+            <li><a href="faq">Media centre</a></li>
+            <li><a href="faq">Terms of use</a></li>
+            <li><a href="faq">Contact us</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+<!-- now main thing to convert it into netflix clone -->
